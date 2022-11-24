@@ -4,11 +4,8 @@
  Filename:       testDriver.cpp
  Summary:        This program will execute two functions in a driver file that use the static array implementation of the stack to
                  print out the values in the stack from bottom to top and return true if the two stacks have the same values in the same order.
-                 This program will then execute two functions in a driver file that use the linked list implementation of the stack to
-                 print out the values in the stack from bottom to top and return true if the two stacks have the same values in the same order.
 
- Specifications: Design, define, implement and test 2 int functions: showBottomToTop( ), compareStacks(stack, stack) and 2 linked list functions:
-                 showBottomToTop( ) and compareStacks(stack, stack).
+ Specifications: Design, define, implement and test 2 int functions: showBottomToTop( ), compareStacks(stack, stack).
 
  Test cases:     10 integers entered by the user for the first stack and 10 integers entered by the user for the linked list.
 
@@ -22,6 +19,7 @@
 #include <cstring>    // Provides strchr
 #include <iostream>   // Provides cout, cin, peek, ignore
 #include <stack>      // Provides the stack template class
+#include "stack1.h"
 using namespace std;
 
 void showBottomToTop(stack<int>&, stack<int>&); // prints out the values in the stack from bottom to top
@@ -33,10 +31,11 @@ int main( )
         stack<int> s1;
         stack<int> s2;
         bool stacksMatch;
-cout << "test.\n";
+
     cout << "**********STACKS PROGRAM**********\n"
-         << "This program will put 10 integers from 1 to 20.\n"
-         << "into an int stack and print them out to the console.\n\n";
+         << "This program will ask the user to enter 10 integers that will be put into a stack and print\n"
+         << "them out to the console. The program will then have the user enter 10 more integers and\n"
+         << "compare them with the first stack.\n\n\n";
 
     showBottomToTop(s1, s2);
     stacksMatch = compareStacks(s1, s2);
@@ -44,7 +43,6 @@ cout << "test.\n";
         cout << "Both stacks are a perfect match." << endl;
     else
         cout << "Both stacks DO NOT match." << endl;
-    //cout << "That evaluates to " << answer << endl;
 
     return EXIT_SUCCESS;
 }
@@ -76,7 +74,6 @@ while (!s2.empty())
 	s1.push(s2.top());
 	s2.pop();
 }
-
 }
 
 bool compareStacks(stack<int>& s1, stack<int>& s2)
